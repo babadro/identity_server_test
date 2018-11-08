@@ -31,11 +31,6 @@ namespace IdentityServerQuickStart
             }
 
             app.UseIdentityServer();
-
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
         }
     }
 }
