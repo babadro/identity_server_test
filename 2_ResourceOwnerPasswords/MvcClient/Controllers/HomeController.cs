@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using MvcClient.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 
 namespace MvcClient.Controllers
 {
@@ -32,6 +34,12 @@ namespace MvcClient.Controllers
             ViewData["Message"] = "Your contact page.";
 
             return View();
+        }
+
+        public async Task Logout()
+        {
+            await HttpContext.SignOutAsync("Cookies");
+            await HttpContext.SignOutAsync("oidc");
         }
 
         public IActionResult Privacy()
